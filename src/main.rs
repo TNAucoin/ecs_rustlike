@@ -98,7 +98,7 @@ fn new_map() -> Vec<TileType> {
     }
 
     // make some random walls
-    let mut rng = rltk::RandomNumberGenerator::new();
+    let mut rng = RandomNumberGenerator::new();
 
     for _i in 0..400 {
         let x = rng.roll_dice(1, 79);
