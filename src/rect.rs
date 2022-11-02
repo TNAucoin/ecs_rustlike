@@ -10,13 +10,13 @@ impl Rect {
         Rect {
             x1: x,
             y1: y,
-            x2: w,
-            y2: h,
+            x2: x + w,
+            y2: y + h,
         }
     }
 
     // Returns true is overlapped with other
-    pub fn intersect(&self, other: Rect) -> bool {
+    pub fn intersect(&self, other: &Rect) -> bool {
         self.x1 <= other.x2 && self.x2 >= other.x1 && self.y1 <= other.y2 && self.y2 >= other.y1
     }
 

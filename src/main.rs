@@ -26,6 +26,7 @@ impl GameState for State {
         self.run_systems();
 
         let map = self.ecs.fetch::<Vec<TileType>>();
+
         draw_map(&map, ctx);
 
         let positions = self.ecs.read_storage::<Position>();
@@ -40,7 +41,8 @@ fn main() -> rltk::BError {
     use rltk::RltkBuilder;
     let context = RltkBuilder::simple80x50().with_title("Rustlike").build()?;
     let mut gs = State { ecs: World::new() };
-    gs.ecs.insert(new_map_rooms_and_corridors());
+    let map = new_map_rooms_and_corridors();
+    gs.ecs.insert(map);
     gs.ecs.register::<Position>();
     gs.ecs.register::<Renderable>();
     gs.ecs.register::<Player>();
